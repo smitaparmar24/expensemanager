@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id ="container" style ="width:300px; height:300px">
+        <canvas id = "pie-chart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var config ={
+            type:'pie',
+            data:{
+                datasets:
+                [
+                    {
+                        data:{{data|safe}},
+                        backgroundColor:
+                        [
+                            'red',
+                            'blue',
+                            'green',
+                            'yellow',
+                            'orange'
+                            
+                        ],
+                        label:{{labels | safe}}
+                    }
+                ]
+            },
+            options:{
+                responsive:true
+            }
+        }
+        window.onload = function(){
+            var ctx = document.getElementById('pie-chart').getContext('2d');
+            window.myPie = new Chart(ctx,config);
+        }
+    </script>
+</body>
+</html>

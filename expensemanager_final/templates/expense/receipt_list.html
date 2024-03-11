@@ -1,0 +1,9 @@
+
+{% load static %}
+
+<div>
+    {% for r in receipts %}
+        <h1>{{ r.name }}</h1>
+        <img src="{{ r.receiptImage.url }}" alt="receipt image" style="width: 100px; height: 100px;">
+    {% endfor %}
+</div>

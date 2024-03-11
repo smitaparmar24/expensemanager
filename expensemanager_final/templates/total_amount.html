@@ -1,0 +1,47 @@
+{% extends "./base.html" %} {% load static %} {% block content %}
+{% load crispy_forms_tags %}
+
+
+{% block nav %}
+    
+{% endblock nav %}
+<!-- expense/list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense List</title>
+</head>
+<body>
+    <h1>Expense List</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <p>Total Amount: {{ total_amount }}</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Date</th>
+                <!-- Add more table headers as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ expense.amount }}</td>
+                <td>{{ expense.description }}</td>
+                <td>{{ expense.date }}</td>
+                <!-- Add more table cells for other expense fields -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock content %}
