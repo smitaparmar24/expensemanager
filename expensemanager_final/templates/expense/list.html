@@ -3,13 +3,23 @@
 
 
 {% block content %}
+<style>
+    .float-start {
+        float: left !important;
+    }
+</style>
 <div class="row">
     <div class="col-12">
       <div class="card mb-4">
-        <div class="card-header pb-0">
-          <h6>Expense LIST</h6>
-          <a href = "{% url 'expense_add' %}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addExpensetModal">Add Expense</a>
-        </div>
+       <div class="card-header pb-0">
+    <h6 class="float-start">Expense LIST</h6>
+    <div class="float-end">
+        <a href="{% url 'expense_add' %}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addExpensetModal">Add Expense</a>
+        <a href="{% url 'receipt_create' %}" class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#addExpensetModal">Add Receipts</a>
+    </div>
+    <div class="clearfix"></div>
+</div>
+        
         <div class="card-body px-0 pt-0 pb-2">
           <div class="table-responsive p-0">
             <table class="table align-items-center mb-0">

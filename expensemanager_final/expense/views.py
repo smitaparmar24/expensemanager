@@ -37,15 +37,13 @@ class ExpenseListView(ListView):
         # Filter expenses based on the logged-in user
         queryset = super().get_queryset().filter(user=user)
         return queryset
-    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        total_amount = self.get_queryset().aggregate(Sum('amount'))['amount__sum']
+        total_amount = self.get_queryset().aggregate(
+            Sum('amount'))['amount__sum']
         context['total_amount'] = total_amount if total_amount else 0
         return context
-            
-        
 
 
 class ExpenseUpdateView(UpdateView):
@@ -74,15 +72,16 @@ def total_amount(request):
         user=user).aggregate(Sum('amount'))['amount__sum']
     # If no expenses are found, set total_amount to 0
     total_amount = total_amount if total_amount else 0
-    return render(request, 'total_amount.html', {'total_amount': total_amount})
+    print(total_amount)
+    return render(request, 'client_dashboard.html',  {'total_amount': total_amount})
+
 
 def pieChart(request):
     labels = []
     data = []
-    
+
     # Get the logged-in user
     user = request.user
-
 
     queryset = Expense.objects.filter(user=user).order_by('-amount')[:5]
     print(queryset)
@@ -104,7 +103,7 @@ class ReceiptCreateView(LoginRequiredMixin, CreateView):
     template_name = 'expense/create_receipt.html'
     success_url = '/expense/list/'
     form_class = ReceiptCreationForm
-    
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -114,9 +113,15 @@ class ReceiptListView(LoginRequiredMixin, ListView):
     template_name = 'expense/receipt_list.html'
     model = Receipts
     context_object_name = 'receipts'
-    
+
     def get_queryset(self):
         # Filter receipts based on the logged-in user
         return Receipts.objects.filter(user=self.request.user)
-    
-    
+
+
+def about_app(request):
+    return render(request, 'expense/about_app.html')
+
+
+def contact_us(request):
+    return render(request, 'expense/contact_us.html')

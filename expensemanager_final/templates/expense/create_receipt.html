@@ -1,6 +1,23 @@
-{% load static %}
+{% extends "../base.html" %} {% load static %} {% block content %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Receipts</title>
+</head>
+ <h1>Upload Receipts</h1>
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+     
 
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %} {{form.as_p}}
-  <input type="submit" value="Upload" />
+  <button type="submit" class="btn btn-primary">Upload</button>
 </form>
+{% endblock content %}

@@ -11,5 +11,6 @@ urlpatterns = [
     path("chart/", views.pieChart, name="chart"),
     path("receipt_create/", ReceiptCreateView.as_view(), name="receipt_create"),
     path("receipt_list/", views.ReceiptListView.as_view(), name="receipt_list"),
-    path("total_amount/", views.total_amount, name="total_amount"),
+    path('about/', views.about_app, name='about_app'),
+    path('contact/', views.contact_us, name='contact_us'),
 ]

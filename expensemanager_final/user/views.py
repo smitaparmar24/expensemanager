@@ -13,6 +13,8 @@ from django.contrib.auth.views import LoginView
 from django.views.generic import ListView
 from expense.models import Expense
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Sum
+
 
 # Create your views here.
 
@@ -96,10 +98,6 @@ class ManagerDashboardView(ListView):
 
 
 class ClientDashboardView(LoginRequiredMixin, ListView):
-    # template_name = 'user/client_dashboard.html'
-    # model = Expense
-    # context_object_name = 'expenses'
-
     def get_queryset(self):
         # Get the logged-in user
         user = self.request.user
@@ -110,26 +108,23 @@ class ClientDashboardView(LoginRequiredMixin, ListView):
     def get(self, request, *args, **kwargs):
         # Get the logged-in user
         user = self.request.user
-        # Filter expenses based on the logged-in user
-        queryset = Expense.objects.filter(user=user)
-
-        labels = []
-        data = []
-
-    # Get the logged-in user
-        user = request.user
-
-        queryset = Expense.objects.filter(user=user).order_by('-amount')[:5]
-        print(queryset)
-
-        for expense in queryset:
-            labels.append(expense.category.name)
-        # Accessing the categoryName through the ForeignKey
-            print(labels)
-            data.append(expense.amount)
+        # Calculate total amount
+        total_amount = Expense.objects.filter(user=user).aggregate(Sum('amount'))[
+            'amount__sum'] or 0
+        cleared_count = Expense.objects.filter(user=user, status='Cleared').count()
+        # Get total count of expenses
+        total_count = Expense.objects.filter(user=user).count()
+        # Get top 5 expenses for pie chart
+        top_expenses = Expense.objects.filter(
+            user=user).order_by('-amount')[:5]
+        labels = [expense.category.name for expense in top_expenses]
+        data = [expense.amount for expense in top_expenses]
 
         return render(request, "user/client_dashboard.html", {
+            "total_amount": total_amount,
+            "cleared_count": cleared_count,
+            "total_count": total_count,
             "labels": labels,
             "data": data,
-            "expenses": queryset
+            "expenses": self.get_queryset()
         })
