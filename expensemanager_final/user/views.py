@@ -111,7 +111,8 @@ class ClientDashboardView(LoginRequiredMixin, ListView):
         # Calculate total amount
         total_amount = Expense.objects.filter(user=user).aggregate(Sum('amount'))[
             'amount__sum'] or 0
-        cleared_count = Expense.objects.filter(user=user, status='Cleared').count()
+        cleared_count = Expense.objects.filter(
+            user=user, status='Cleared').count()
         # Get total count of expenses
         total_count = Expense.objects.filter(user=user).count()
         # Get top 5 expenses for pie chart

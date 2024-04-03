@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .float-start {
+      float: left !important;
+  }
+</style>
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+     <div class="card-header pb-0">
+          <!-- Monthly expenses -->
+    <h4 class="float-start">Your Monthly Savings</h4>
+    <div class="card-body px-0 pt-0 pb-2">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0">
+              <thead>
+    
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="padding-left: 10px;">Month</th>
+                    <th colspan="2" class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Savings</th>
+                </tr>
+            </thead>
+    
+         <tbody>
+            {% for month, savings in savings_data %}
+            <tr>
+              <td class="align-middle  text-sm">
+                    <span class="badge badge-sm bg-gradient-success">{{ month }}</span>
+                  </td>
+              <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">{{ savings }}</span>
+                  </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}

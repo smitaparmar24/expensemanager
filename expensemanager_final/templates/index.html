@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f5f9;
+            color: #333333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffffff;
+        }
+
+        .content {
+            text-align: center;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            
+            color: #007bff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 img {
+            width: 100%; /* Set the width of the logo to 100% */
+            height: 250px; /* Maintain aspect ratio */
+        }
+        h2 {
+            width: 100%;
+            height: auto;
+            font-family: 'Prosto', sans-serif;
+            color: white; /* Text color */
+            background-color: rgb(89, 108, 255); /* Background color */
+            
+            display: inline-block; /* Ensure the background color covers the entire text */
+            border-radius: 5px; /* Add rounded corners */
+        }
+        p {
+            font-family: Lato, sans-serif;
+
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-login {
+            margin-right: 20px;
+        }
+
+        .app-screenshots {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .app-screenshot {
+            flex: 0 0 calc(33.333% - 20px);
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .app-screenshot img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .why-us {
+            margin-top: 50px;
+        }
+
+        .why-us h2 {
+            color: #007bff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .why-us p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        p ul {
+            text-align: left; /* Align the list items to the left */
+            padding-left: 0; /* Remove default padding */
+            margin-left: 0; /* Remove default margin */
+            list-style-position: inside; /* Place bullets inside the list items */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>
+                <img src="{% static 'D:\project\expensemanager_final\static\assets\img\logos\Screenshot (330).png' %}" alt="Large Logo">
+            </h1>
+            
+            <h2>A SIMPLE AND EFFICIENT WAY TO TRACK YOUR EXPENSES AND MANAGE YOUR FINANCES.</h2>
+            <br><br><br>
+            <hr style="border-top: 2px solid #333;">
+            <p style="font-size: 24px;"><b>Get Started Today!</b></p>
+            
+             <p>Whether you're new to budgeting or a seasoned pro, BudgetBuddy is here to simplify your financial journey. Sign up now to start managing your money with ease!</p>  
+             <p>Already have an account? Login to continue.</p>
+            <a href="/user/login" class="btn btn-login">Login</a>
+            <a href="/user/client-register/" class="btn btn-login">Sign Up</a>
+            <br><br>
+            <hr style="border-top: 2px solid #333;">
+            <p style="font-size: 24px;">A Peek Inside Budget Buddy</p>
+            
+            <div class="app-screenshots">
+                <div class="app-screenshot">
+                    <!-- Placeholder screenshot -->
+                    <img src="{% static 'D:\project\expensemanager_final\static\assets\img\logos\Screenshot (346).png' %}" alt="Expense Manager Screenshot">
+                </div>
+                <div class="app-screenshot">
+                    <!-- Placeholder screenshot -->
+                    <img src="{% static 'D:\project\expensemanager_final\static\assets\img\logos\Screenshot (347).png' %}" alt="Expense Manager Screenshot">
+                </div>
+                <div class="app-screenshot">
+                    <!-- Placeholder screenshot -->
+                    <img src="{% static 'D:\project\expensemanager_final\static\assets\img\logos\Screenshot (348).png' %}" alt="Expense Manager Screenshot">
+                </div>
+            </div>
+            <div class="why-us">
+                <hr style="border-top: 2px solid #333;">
+                <p style="font-size: 24px;">Why Us?</p>
+                <br>
+                <ul>
+                 <li style="text-align: left;"><p>Effortless Expense Tracking: With our intuitive interface, you can easily track your expenses and stay on top of your finances.</p></li>
+                 <li style="text-align: left;"><p>Comprehensive Financial Management: Take control of your money by managing budgets, setting financial goals, and monitoring your spending habits.</p></li>
+                <li style="text-align: left;"><p>Secure and Reliable: Your financial data is encrypted and securely stored, ensuring your privacy and peace of mind.</p></li>
+                <br>
+                </ul>
+            </div>
+        <div>
+            <hr style="border-top: 2px solid #333;">
+                <p style="font-size: 24px;">Contact Us</p>
+                 <div class="main">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3" style="margin-left: 19px;">
+                        <div class="row mt-3 row-no-gutters"></div>
+                        <div class="row mt-3 ">
+                            <div class="move-to-right" style="display: flex;">
+                                <div class="col-md-3 col-sm-3 col-xs-3"><img src="https://moneyview.in/images/customer-care-no.png" data-width="40" height="50"></div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <h6 class="text-left font-weight-bold" style="width: 158px; font-size: 15px;">&nbsp&nbsp&nbsp&nbspContact Number</h6>
+                                    <h6 class="text-left"><a style="font-size: 16px;" href="tel:+917097707479">7096707479</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 ml-4">
+                        <div class="row mt-3 row-no-gutters"></div>
+                        <div class="row mt-3 ">
+                            <div class="move-to-left" style="display: flex;">
+                                <div class="col-md-3 col-sm-3 col-xs-3"><img src="https://moneyview.in/images/blog/wp-content/uploads/2019/03/ic-dsa-inquiry-40%402x.png" data-width="40" height="50"></div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <h6 class="text-left font-weight-bold" style="width: 158px; font-size: 15px;">&nbsp&nbsp&nbsp&nbspCustomer Support</h6>
+                                    <h6 class="text-left"><a style="font-size: 16px;" href="mailto:care@moneyview.in">parmarsmita2405@gmail.com</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3 "></div>
+                    </div>
+                          
+        </div>
+
+    </div>
+</body>
+
+</html>

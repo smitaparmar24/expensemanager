@@ -1,26 +1,25 @@
 {% extends "../base.html" %}
 {% load static %}
 
-
 {% block content %}
 <style>
-    .float-start {
-        float: left !important;
-    }
+  .float-start {
+      float: left !important;
+  }
 </style>
 <div class="row">
-    <div class="col-12">
-      <div class="card mb-4">
-       <div class="card-header pb-0">
-    <h6 class="float-start">Expense LIST</h6>
+  <div class="col-12">
+    <div class="card mb-4">
+     <div class="card-header pb-0">
+    <!-- Regular expenses -->
+    <h4 class="float-start">All Expense List </h4>
     <div class="float-end">
-        <a href="{% url 'expense_add' %}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addExpensetModal">Add Expense</a>
-        <a href="{% url 'receipt_create' %}" class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#addExpensetModal">Add Receipts</a>
-    </div>
-    <div class="clearfix"></div>
+      <a href="{% url 'expense_add' %}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addExpensetModal">Add Expense</a>
+      <a href="{% url 'receipt_create' %}" class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#addExpensetModal">Add Receipts</a>
+  </div>
+  <div class="clearfix"></div>
 </div>
-        
-        <div class="card-body px-0 pt-0 pb-2">
+    <div class="card-body px-0 pt-0 pb-2">
           <div class="table-responsive p-0">
             <table class="table align-items-center mb-0">
               <thead>
@@ -34,17 +33,15 @@
                   <th class="text-secondary opacity-7">ACTION</th>
                 </tr>
               </thead>
-              <tbody>
+        <tbody>
                 {% for expense in expenses %}
 
                 <tr>
                   <td>
                     <div class="d-flex px-2 py-1">
-                      <div>
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                      </div>
+                     
                       <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">{{expense.amount}}</h6>
+                        <h6 class="mb-0 text-sm">&nbsp{{expense.amount}}</h6>
                         
                       </div>
                     </div>
@@ -76,10 +73,40 @@
                 
               </tbody>
             </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            <div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+     <div class="card-header pb-0">
+          <!-- Monthly expenses -->
+    <h4 class="float-start">Monthly Expenses</h4>
+    <br>
+    <br>
+    <div class="card-body px-0 pt-0 pb-2">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0">
+              <thead>
     
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="padding-left: 10px;">Month</th>
+
+                  <th colspan="2" class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for month_expense in monthly_expenses %}
+            <tr>
+              <td class="align-middle  text-sm">
+                    <span class="badge badge-sm bg-gradient-success">{{ month_expense.month }}</span>
+                  </td>
+              <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">{{ month_expense.total_amount }}</span>
+                  </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</div>
 {% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .float-start {
+      float: left !important;
+  }
+</style>
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+     <div class="card-header pb-0">
+    <!-- Regular expenses -->
+    <h4 class="float-start">Monthly Expense Chart</h4>
+<canvas id="monthlyExpenseChart"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('monthlyExpenseChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ month_names | safe }},
+            datasets: [{
+                label: 'Total Amount',
+                data: {{ total_amounts | safe }},
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+{% endblock %}
